@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="fa448696-422e-446c-8679-8ef024c48ea2" name="weyapiserver" url="http://object.zhichao.site">
+        <fileTransfer host="object.zhichao.site" port="345" rootFolder="/home/go/src/weyapiserver" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="345" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
