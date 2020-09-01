@@ -7,8 +7,8 @@ WORK_DIR=/go/src/weyapiserver
 BASE_NAME=weyapiserver
 releasedir=./.release
 distdir=${releasedir}/dist
-GO_VERSION=1.13
-
+GO_VERSION=1.12
+BASEDIR="$( cd "$( dirname "$0"  )" && pwd  )"
 VERSION=$(git branch | grep '^*' | cut -d ' ' -f 2 | awk -F'V' '{print $2}')
 buildTime=$(date +%F-%H)
 git_commit=$(git log -n 1 --pretty --format=%h)
@@ -49,6 +49,7 @@ function localbuild() {
 function build::image() {
 	echo "---> Build Image"
 	DOCKER_PATH=./hack/docker
+        cd $BASEDIR/../
 	HOME=`pwd`
 
 	docker run --rm -v `pwd`:${WORK_DIR} -w ${WORK_DIR} -it golang:${GO_VERSION} go build -ldflags "-w -s -X verion.version=${release_desc}"  -o ${DOCKER_PATH}/${BASE_NAME} .

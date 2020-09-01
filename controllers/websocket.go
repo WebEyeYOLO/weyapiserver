@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"strconv"
 	"weyapiserver/algorithm"
+	"weyapiserver/option"
 )
 
 type WebSocketController struct {
@@ -48,10 +49,10 @@ func (c *WebSocketController) Get() {
 		imageId := remoteHost + strconv.Itoa(index) + ".jpg"
 		re := c.doProcess(&yolo, msg, imageId)
 		//	re2json, err := json.Marshal(re)
-		if err != nil {
-			logs.Error("json Mu error")
-			break
-		}
+		//if err != nil {
+		//	logs.Error("json Mu error")
+		//	break
+		//}
 		//err = ws.WriteJSON(re)
 		err = ws.WriteMessage(1, re)
 		if err != nil {
@@ -64,9 +65,9 @@ func (c *WebSocketController) Get() {
 }
 
 func (c *WebSocketController) doProcess(pro algorithm.Processer, data []byte, imageId string) []byte {
-	savePath := "images/" + imageId
+	savePath := option.Conf.ImageSavePath + imageId
 	pro.SaveImage(data, savePath)
-	resultPath := "/data/yolo_tensorflow/result/" + imageId[0:len(imageId)-6] + ".json"
+	resultPath := option.Conf.ResultPath + imageId[0:len(imageId)-6] + ".json"
 	return pro.GetResultFromFile(resultPath)
 
 }

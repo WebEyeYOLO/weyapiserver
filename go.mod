@@ -8,4 +8,5 @@ require (
 	github.com/gorilla/websocket v1.4.2
 	github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644 // indirect
 	github.com/smartystreets/goconvey v1.6.4
+	github.com/spf13/pflag v1.0.5
 )
