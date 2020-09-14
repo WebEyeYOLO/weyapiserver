@@ -41,6 +41,6 @@ func NewConfig() *Config {
 
 //AddFlags config
 func (c *Config) AddFlags(fs *pflag.FlagSet) {
-	fs.StringVar(&c.ResultPath, "result-path", "/run/yolo-tensorflow/result", "the path where detection result json saved")
+	fs.StringVar(&c.ResultPath, "result-path", "/run/result", "the path where detection result json saved")
 	fs.StringVar(&c.ImageSavePath, "image-savepath", "/run/images", "the path where image saved from websocket")
 }
